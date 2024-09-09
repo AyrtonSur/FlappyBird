@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class FlappyBird extends JPanel {
+public class FlappyBird extends JPanel implements ActionListener {
     private int boardWidth = 360;
     private int boardHeight = 640;
 
@@ -20,17 +20,24 @@ public class FlappyBird extends JPanel {
     //Bird
     private Bird bird;
 
+    Timer gameLoop;
 
 
     FlappyBird() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
 
+        //loading images
         backgroundImage = new ImageIcon(getClass().getResource("./Sprites/flappybirdbg.png")).getImage();
         birdImage = new ImageIcon(getClass().getResource("./Sprites/flappybird.png")).getImage();
         topPipeImage = new ImageIcon(getClass().getResource("./Sprites/toppipe.png")).getImage();
         bottomPipeImage = new ImageIcon(getClass().getResource("./Sprites/bottompipe.png")).getImage();
 
+        //Creating bird
         bird = new Bird(birdImage, boardWidth, boardHeight);
+
+        //Game timer
+        gameLoop = new Timer(1000/60, this);
+        gameLoop.start();
     }
 
     public void draw(Graphics g) {
@@ -42,6 +49,12 @@ public class FlappyBird extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        bird.move();
+        repaint();
     }
 
 
