@@ -14,7 +14,7 @@ public class Bird {
     private int birdWidth = 34;
     private int birdHeight = 24;
     private Image img;
-    private int velocityY = 12;
+    private int velocityY = 0;
     private int gravity = 1;
 
 
@@ -50,5 +50,9 @@ public class Bird {
 
     public int getBirdY() {
         return birdY;
+    }
+
+    public void setVelocityY(int velocityY) {
+        this.velocityY = velocityY;
     }
 }
