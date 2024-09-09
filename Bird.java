@@ -59,4 +59,12 @@ public class Bird {
     public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
     }
+
+    public void setBirdY(int birdY) {
+        this.birdY = birdY;
+    }
+
+    public void setBirdX(int birdX) {
+        this.birdX = birdX;
+    }
 }
