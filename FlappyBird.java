@@ -94,6 +94,17 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         for (Pipe p: pipes){
             g.drawImage(p.getImg(), p.getPipeX(), p.getPipeY(), p.getPipeWidth(), p.getPipeHeight(), null);
         }
+
+        //Score
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.PLAIN, 32));
+        if (gameOver) {
+            g.drawString("Game Over", boardWidth/2-85, boardHeight/2);
+            g.drawString(String.valueOf((int) score), 10, 35);
+        }
+        else {
+            g.drawString(String.valueOf((int) score), 10, 35);
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -114,9 +125,17 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
         for (Pipe p: pipes){
             p.move();
+
+            if(!p.getPassed() && bird.getBirdX() > p.getPipeX() + p.getPipeWidth()){
+                p.setPassed(true);
+                score += 0.5;
+            }
+
             if (collision(bird, p)) {
                 setGameOver(true);
             }
+
+
         }
 
         if(gameOver) {
