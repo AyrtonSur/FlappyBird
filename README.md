@@ -13,4 +13,4 @@
     <code>java App</code>
   </li>
 </ol><br>
-<aside>I will probably make some little changes on this code later on, but for now, it will likely stay like this.</aside>
+>I will probably make some little changes on this code later on, but for now, it will likely stay like this.
