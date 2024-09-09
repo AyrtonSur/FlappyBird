@@ -14,7 +14,9 @@ public class Bird {
     private int birdWidth = 34;
     private int birdHeight = 24;
     private Image img;
-    private int velocityY = -6;
+    private int velocityY = 12;
+    private int gravity = 1;
+
 
     Bird(Image img, int width, int height) {
         this.img = img;
@@ -23,7 +25,11 @@ public class Bird {
     }
 
     public void move() {
-        this.birdY += velocityY;
+        velocityY -= gravity;
+        this.birdY -= velocityY;
+
+        //Para limitar até onde o passáro pode ir
+        this.birdY = Math.max(this.birdY, 0);
     }
 
     public int getBirdHeight() {
