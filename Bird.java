@@ -11,8 +11,8 @@ public class Bird {
     //Bird
     private int birdX;
     private int birdY;
-    private int birdWidth = 34;
-    private int birdHeight = 24;
+    private static int birdWidth = 34;
+    private static int birdHeight = 24;
     private Image img;
     private int velocityY = 0;
     private int gravity = 1;
@@ -30,13 +30,17 @@ public class Bird {
 
         //Para limitar até onde o passáro pode ir
         this.birdY = Math.max(this.birdY, 0);
+
+        if (birdY > FlappyBird.getBoardHeight()){
+            FlappyBird.setGameOver(true);
+        }
     }
 
-    public int getBirdHeight() {
+    public static int getBirdHeight() {
         return birdHeight;
     }
 
-    public int getBirdWidth() {
+    public static int getBirdWidth() {
         return birdWidth;
     }
 
