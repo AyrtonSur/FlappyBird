@@ -12,5 +12,5 @@
     Then, you just need to run this code on cmd, while on the repository folder:
     <code>java App</code>
   </li>
-</ol>
+</ol><br>
 <aside>I will probably make some little changes on this code later on, but for now, it will likely stay like this.</aside>
