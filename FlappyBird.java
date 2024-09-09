@@ -1,10 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class FlappyBird extends JPanel implements ActionListener, KeyListener {
@@ -22,8 +18,6 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
     //Pipes
     private ArrayList<Pipe> pipes;
-
-    private Random random = new Random();
 
     //Timer for gameloop
     private Timer gameLoop;
@@ -88,11 +82,11 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         g.drawImage(backgroundImage, 0, 0, boardWidth, boardHeight, null);
 
         //Bird
-        g.drawImage(bird.getImg(), bird.getBirdX(), bird.getBirdY(), bird.getBirdWidth(), bird.getBirdHeight(), null);
+        g.drawImage(bird.getImg(), bird.getBirdX(), bird.getBirdY(), Bird.getBirdWidth(), Bird.getBirdHeight(), null);
 
         //Pipes
         for (Pipe p: pipes){
-            g.drawImage(p.getImg(), p.getPipeX(), p.getPipeY(), p.getPipeWidth(), p.getPipeHeight(), null);
+            g.drawImage(p.getImg(), p.getPipeX(), p.getPipeY(), Pipe.getPipeWidth(), Pipe.getPipeHeight(), null);
         }
 
         //Score
@@ -113,10 +107,10 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     }
 
     public boolean collision(Bird a, Pipe b) {
-        return a.getBirdX() < b.getPipeX() + b.getPipeWidth() && //a's top left corner does not reach b's top right corner
-               a.getBirdX() + a.getBirdWidth() > b.getPipeX() && //a's top right corner passes b's top left corner
-               a.getBirdY() < b.getPipeY() + b.getPipeHeight() && //a's bottom right corner does not reach b's bottom left corner
-               a.getBirdY() + a.getBirdHeight() > b.getPipeY(); //a's bottom left corner passes b's bottom right corner
+        return a.getBirdX() < b.getPipeX() + Pipe.getPipeWidth() && //a's top left corner does not reach b's top right corner
+               a.getBirdX() + Bird.getBirdWidth() > b.getPipeX() && //a's top right corner passes b's top left corner
+               a.getBirdY() < b.getPipeY() + Pipe.getPipeHeight() && //a's bottom right corner does not reach b's bottom left corner
+               a.getBirdY() + Bird.getBirdHeight() > b.getPipeY(); //a's bottom left corner passes b's bottom right corner
     }
 
     @Override
@@ -126,7 +120,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         for (Pipe p: pipes){
             p.move();
 
-            if(!p.getPassed() && bird.getBirdX() > p.getPipeX() + p.getPipeWidth()){
+            if(!p.getPassed() && bird.getBirdX() > p.getPipeX() + Pipe.getPipeWidth()){
                 p.setPassed(true);
                 score += 0.5;
             }

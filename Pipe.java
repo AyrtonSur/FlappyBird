@@ -1,12 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 public class Pipe {
     private int pipeX;
     private int pipeY;
