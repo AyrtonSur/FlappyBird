@@ -32,4 +32,12 @@ public class Bird {
     public Image getImg() {
         return img;
     }
+
+    public int getBirdX() {
+        return birdX;
+    }
+
+    public int getBirdY() {
+        return birdY;
+    }
 }
