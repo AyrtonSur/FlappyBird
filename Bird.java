@@ -17,8 +17,8 @@ public class Bird {
 
     Bird(Image img, int width, int height) {
         this.img = img;
-        this.birdWidth = width/8;
-        this.birdHeight = height/2;
+        this.birdX = width/8;
+        this.birdY = height/2;
     }
 
     public int getBirdHeight() {
