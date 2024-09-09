@@ -50,6 +50,10 @@ public class Pipe {
         return velocityX;
     }
 
+    public boolean getPassed(){
+        return passed;
+    }
+
     public void setPassed(boolean passed) {
         this.passed = passed;
     }
