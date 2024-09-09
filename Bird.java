@@ -14,11 +14,16 @@ public class Bird {
     private int birdWidth = 34;
     private int birdHeight = 24;
     private Image img;
+    private int velocityY = -6;
 
     Bird(Image img, int width, int height) {
         this.img = img;
         this.birdX = width/8;
         this.birdY = height/2;
+    }
+
+    public void move() {
+        this.birdY += velocityY;
     }
 
     public int getBirdHeight() {
