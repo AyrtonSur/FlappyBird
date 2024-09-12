@@ -38,6 +38,9 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         addKeyListener(this);
 
+        SoundEffect.loadSound("jump", "SoundEffects/jump.wav", 0.1f);
+        SoundEffect.loadSound("death", "SoundEffects/death.wav", 0.1f);
+
         //loading images
         backgroundImage = new ImageIcon(getClass().getResource("./Sprites/flappybirdbg.png")).getImage();
         birdImage = new ImageIcon(getClass().getResource("./Sprites/flappybird.png")).getImage();
@@ -135,6 +138,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         if(gameOver) {
             placePipesTimer.stop();
             gameLoop.stop();
+            SoundEffect.playSound("death");
         }
 
         repaint();
@@ -143,6 +147,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            SoundEffect.playSound("jump");
             //set bird velocity to 9 everytime space is pressed
             bird.setVelocityY(9);
             if (gameOver) {
@@ -155,6 +160,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
                 gameLoop.start();
                 placePipesTimer.start();
             }
+
         }
     }
 
